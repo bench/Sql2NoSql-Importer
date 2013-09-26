@@ -10,9 +10,9 @@ This version fixes serious memory leaks and add new field types support such as 
 How to use ?
 ==================
 
-#Download or clone project
+**1 - Download or clone project**
 
-#Modify import.properties file to match your needs.
+**2 - Modify import.properties file to match your needs.**
 
 Example :
 
@@ -32,7 +32,8 @@ couch.db=xms-2124
 
 couch.port=5984
 
-3-Modify import.properties file. This file defines the structure of your imported documents.
+**3 - Modify import.properties file.**
+This file defines the structure of your imported documents.
 The file structure follows Solr's dataimport configuration file. (see http://wiki.apache.org/solr/DataImportHandler)
 
 Field definitions have one more mandatory attribute "type".
@@ -49,5 +50,5 @@ Possible values are
 - TIMESTAMPASINTTOHUMANFORMAT (convert int to yyyy-MM-dd'T'HH:mm:ssz),
 - TIMESTAMPASLONGTOHUMANFORMAT (convert long to yyyy-MM-dd'T'HH:mm:ssz)
 
-4-Run SQLToNoSQLImporter.java !
+**4 - Run SQLToNoSQLImporter.java !**
 
