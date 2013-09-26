@@ -1,0 +1,70 @@
+#INSTALL COUCHDB
+sudo apt-get install couchdb -y
+
+#ACCESS COUCHDB VIA HTTP
+http://127.0.0.1:5984 => Execution de commande coucdb en get/put
+http://127.0.0.1:5984/_utils => interface de gestion futon
+
+#INSTALL ELASTICSEARCH
+Download elasticsearch from http://www.elasticsearch.org
+Unzip archive un run /bin/elasticsearch start. (Under *nix system, the command will start the process in the background)
+
+#RUN ES INTERFACE
+#elasticsearch-0.90.2/bin$ ./plugin -install mobz/elasticsearch-head
+=> http://localhost:9200/_plugin/head/
+
+#installation COUCHDBRIVER
+./plugin -install elasticsearch/elasticsearch-river-couchdb/1.2.0
+
+#Ajout de la river
+curl -XPUT 'localhost:9200/_river/test/_meta' -d '{
+    "type" : "couchdb",
+    "couchdb" : {
+        "host" : "localhost",
+        "port" : 5984,
+        "db" : "test",
+        "filter" : null
+    }
+}'
+
+#REDEMARRER ELASTIC
+bin/elasticsearch stop (voir kill...)
+bin/elasticsearch start
+
+#INSTALLATION KIBANA
+http://three.kibana.org/intro.html
+=> DOWNLOAD EXTRACT
+Installer dans Apache avec vhost standard
+/etc/hosts : 127.0.0.1 localhost.kibana
+/etc/apache2/sites-enabled/localhost.kibana.vhost
+=>
+<VirtualHost *:80>
+      DocumentRoot /home/clouiset/Applis/kibana-master
+
+    ServerName localhost.kibana
+    ServerAdmin webmaster@dashboard.cycloboost.com
+
+    ErrorLog /var/log/kibana-error.log
+
+    <Directory /home/clouiset/Applis/kibana-master>
+        Options FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+
+</VirtualHost>
+
+# ACCEDER A KIBANA
+=> http://localhost.kibana/#/dashboard
+
+# CONFIGURER KIBANA
+- Ajouter un time picker pour définir la propriété timefield des documents (doit être au format timestamp 102548795)
+- Ajouter les autres panels
+(voir fichier de sauvegarde dashboard kibana dans la fiche jira xms-2129)
+
+##### RAF ######
+- Rendre le projet exécutable en prod (fournir un jar avec le nom de la la table en paramètre)
+- Ajouter d'autres champs si nécessaire pour l'import (configurer le fichier /etc/db-data-config.xml)
+

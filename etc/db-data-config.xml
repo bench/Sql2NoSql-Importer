@@ -1,0 +1,23 @@
+<dataConfig>
+
+    <dataSource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://..." user="root" password="mysql" batch-size="-1"/>
+   
+    <document>
+       <entity name="user" pk="id_user" query="SELECT id_user,message,etat,cause,date_naissance,date_deces,id_country FROM user">
+		  <field column="id_user" name="id_sms" type="INTEGER"/>
+		  <field column="message" name="message" type="BINARY"/>
+		  <field column="etat" name="etat" type="STRING"/>    
+		  <field column="cause" name="cause" type="INTEGER"/>
+		  <field column="date_naissance" name="date_naissance" type="TIMESTAMPASLONG"/>    
+		  <field column="date_deces" name="date_deces" type="TIMESTAMPASINT"/>    
+		  <field column="date_naissance" name="date_naissance_string" type="TIMESTAMPASLONGTOHUMANFORMAT"/>    
+		  <field column="date_deces" name="date_deces_string" type="TIMESTAMPASINTTOHUMANFORMAT"/>    
+		  <field column="id_country" name="id_pays" type="INTEGER"/>    	  
+		  
+		  <entity name="children" query="select name, age from child where id_father='${user.id_user}'">
+                	<field column="name" name="name" type="STRING"/>   
+                	<field column="age" name="age" type="INTEGER"/>                          
+                  </entity>		  
+       </entity>        
+    </document>	
+</dataConfig>
