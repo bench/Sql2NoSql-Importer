@@ -16,7 +16,7 @@ How to use ?
 
 Example :
 
-#common properties
+\#common properties
 sql-data-config-file=db-data-config.xml
 autoCommitSize=500 
 dataStoreType=couch #available values are mongo,es,couch 
