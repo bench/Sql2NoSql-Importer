@@ -33,6 +33,7 @@ couch.db=xms-2124
 couch.port=5984
 
 **3 - Modify import.properties file.**
+
 This file defines the structure of your imported documents.
 The file structure follows Solr's dataimport configuration file. (see http://wiki.apache.org/solr/DataImportHandler)
 
