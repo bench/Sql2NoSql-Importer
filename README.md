@@ -10,9 +10,9 @@ This version fixes serious memory leaks and add new field types support such as 
 How to use ?
 ==================
 
-1-Download or clone project
+#Download or clone project
 
-2-Modify import.properties file to match your needs.
+#Modify import.properties file to match your needs.
 
 Example :
 
