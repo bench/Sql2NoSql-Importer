@@ -18,12 +18,18 @@ Example :
 
 \#common properties
 sql-data-config-file=db-data-config.xml
+
 autoCommitSize=500 
+
 dataStoreType=couch #available values are mongo,es,couch 
 
-#couch-db related settings
+
+\#couch-db related settings
+
 couch.host=localhost
+
 couch.db=xms-2124
+
 couch.port=5984
 
 3-Modify import.properties file. This file defines the structure of your imported documents.
