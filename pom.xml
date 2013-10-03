@@ -2,9 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>cvf</groupId>
+	<groupId>benc</groupId>
 	<artifactId>Sql2NoSqlImporter</artifactId>
-	<packaging>rar</packaging>
 	<version>1.00-SNAPSHOT</version>
 
 	<properties>
@@ -13,12 +12,6 @@
 	</properties>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>mgs</groupId>
-			<artifactId>libExtendedUDH</artifactId>
-			<version>2.2.3</version>
-		</dependency>
 
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -75,8 +68,6 @@
 			<artifactId>commons-dbutils</artifactId>
 			<version>1.5</version>
 		</dependency>
-
-
 
 	</dependencies>
 

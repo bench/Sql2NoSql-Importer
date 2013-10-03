@@ -15,20 +15,17 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.benc.export.sql.model.DataConfig.Entity;
+import net.benc.export.sql.model.DataConfig.Field;
 import net.benc.export.sql.model.DataStoreType;
 import net.benc.export.sql.model.FieldType;
 import net.benc.export.sql.model.FieldTypeParser;
-import net.benc.export.sql.model.DataConfig.Entity;
-import net.benc.export.sql.model.DataConfig.Field;
 
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpException;
-
-import fr.cvf.mgs.extendedudh.IncorrectUDHException;
-import fr.cvf.mgs.extendedudh.UDHParser;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
@@ -228,18 +225,6 @@ public class DocBuilder {
 				}
 			}
 		}
-
-		/*** Compute OADC ***/
-		String message = ((String) entityMap.get("message"));
-		try {
-			if (message != null) {
-				UDHParser udhParser = new UDHParser(message.getBytes());
-				entityMap.put("oadc", udhParser.getAttribute("02"));
-			}
-		} catch (IncorrectUDHException e) {
-			log.info("Enable to parse oadc on message : " + message);
-		}
-		/*** END Compute OADC ***/
 
 		return entityMap;
 	}
