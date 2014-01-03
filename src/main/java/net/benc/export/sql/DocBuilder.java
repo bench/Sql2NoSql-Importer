@@ -15,34 +15,17 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.benc.export.sql.model.DataConfig.Entity;
-import net.benc.export.sql.model.DataConfig.Field;
-import net.benc.export.sql.model.DataStoreType;
-import net.benc.export.sql.model.FieldType;
-import net.benc.export.sql.model.FieldTypeParser;
-
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpException;
 
-/**
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+import net.benc.export.sql.model.DataConfig.Entity;
+import net.benc.export.sql.model.DataConfig.Field;
+import net.benc.export.sql.model.DataStoreType;
+import net.benc.export.sql.model.FieldType;
+import net.benc.export.sql.model.FieldTypeParser;
 
 /**
  * <p>
@@ -51,11 +34,15 @@ import org.apache.http.HttpException;
  * the {@link EntityProcessor} implementations to fetch data.
  * </p>
  * <p/>
- * <b>This API is experimental and subject to change</b>
- * 
  * @since solr 1.3
  */
 public class DocBuilder {
+    
+    	public static final String NAME = "name";
+
+	public static final String MULTI_VALUED = "multiValued";
+
+	public static final String DRIVER = "driver";
 
 	private static Log log = LogFactory.getLog(DocBuilder.class);
 
@@ -170,7 +157,7 @@ public class DocBuilder {
 				FieldType fieldType = FieldType.valueOf(field.allAttributes.get("type").toUpperCase());
 
 				if (firstRow.get(field.column) != null) {
-					if (entity.pk != null && entity.pk.equals(field.name)) {
+					if (entity.pk != null && entity.pk.equals(field.name) && !importer.getDataStoreType().equals(DataStoreType.ES)) {
 						if (importer.getDataStoreType().equals(DataStoreType.MONGO)) {
 							entityMap.put("_id", convertFieldType(fieldType, firstRow.get(field.column)).get(0));
 						} else if (importer.getDataStoreType().equals(DataStoreType.COUCH)) {
@@ -258,11 +245,5 @@ public class DocBuilder {
 		}
 		return temp;
 	}
-
-	public static final String NAME = "name";
-
-	public static final String MULTI_VALUED = "multiValued";
-
-	public static final String DRIVER = "driver";
 
 }
