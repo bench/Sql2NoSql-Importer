@@ -1,9 +1,13 @@
 Sql2NoSql-Importer
 ==================
 
-Import Sql (MySQL,Oracle,PostgreSQL) data to NoSQL Systems. Mongodb,CouchDB, and Elastic Search systems are currently supported.
+Import Sql data (any JDBC driver such as MySQL, Oracle, PostgreSQL) to a NoSQL database . 
 
-This project is a fork from https://code.google.com/p/sql-to-nosql-importer/ project, initialy developed by Sathis Kumar.
+Mongodb, CouchDB, and Elasticsearch are currently supported.
+
+Data can be imported as bulk to reduce processing time and can be forwarded to multiple elasticsearch nodes. 
+
+This project was initialy a fork from https://code.google.com/p/sql-to-nosql-importer/ project, developed by Sathis Kumar.
 
 This version fixes serious memory leaks and add new field types support such as binaries, timestamp stored as integer or long, and more.
 
