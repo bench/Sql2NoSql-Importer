@@ -18,32 +18,28 @@ How to use ?
 
 **2 - Modify import.properties file to match your needs.**
 
-`\#common properties
-  sql-data-config-file=db-data-config.xml
-  
-  autoCommitSize=500 
-  
-  dataStoreType=couch #available values are mongo,es,couch 
-  
-  \#couch-db related settings
-  couch.host=localhost
-  
-  couch.db=xms-2124
-  
-  couch.port=5984`
+    \#common properties
+    sql-data-config-file=db-data-config.xml
+    autoCommitSize=500
+    dataStoreType=couch #can be one of mongo, es or couch 
+     
+    \#couch-db related settings
+    couch.host=localhost # Server host
+    couch.db=xms-2124 # Database name
+    couch.port=5984` # Database port
+
+**3 - Modify dataimport configuration file to match your needs.**
 
 This file defines the structure of your imported documents.
 The file structure follows Solr's [dataimport configuration file](http://wiki.apache.org/solr/DataImportHandler)
 
-Field definitions have one more mandatory attribute "type".
-
-Possible values are 
+Possible field types are 
 - STRING, 
 - INTEGER, 
 - DOUBLE, 
 - LONG, 
-- DATE (convert timestamp or date type to yyyy-MM-dd'T'HH:mm:ssz)
-- BOOLEAN, 
+- DATE (convert timestamp or date type to yyyy-MM-dd'T'HH:mm:ssz),
+- BOOLEAN,
 - BINARY (convert blob to byte array), 
 - TIMESTAMPASINT (convert int to timestamp), 
 - TIMESTAMPASLONG (convert long to timestamp), 
