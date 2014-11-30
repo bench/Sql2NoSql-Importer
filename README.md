@@ -3,11 +3,11 @@ Sql2NoSql-Importer
 
 Import your Sql data (any JDBC driver such as MySQL, Oracle, PostgreSQL supported) to a NoSQL database . 
 
-Currently supported : Mongodb, CouchDB, and `Elasticsearch`
+Currently supported : `Mongodb`, `CouchDB`, and `Elasticsearch`
 
 Data can be imported as bulk to reduce processing time and can be forwarded to multiple elasticsearch nodes. 
 
-This project was initialy a fork from https://code.google.com/p/sql-to-nosql-importer/ project, developed by Sathis Kumar.
+This project was initialy a fork of [Sathis Kumar project](https://code.google.com/p/sql-to-nosql-importer/).
 
 This version fixes serious memory leaks and add new field types support such as binaries, timestamp stored as integer or long, and more.
 
@@ -18,30 +18,25 @@ How to use ?
 
 **2 - Modify import.properties file to match your needs.**
 
-Example :
-
-\#common properties
-sql-data-config-file=db-data-config.xml
-
-autoCommitSize=500 
-
-dataStoreType=couch #available values are mongo,es,couch 
-
-
-\#couch-db related settings
-
-couch.host=localhost
-
-couch.db=xms-2124
-
-couch.port=5984
-
-**3 - Modify import.properties file.**
+  \#common properties
+  sql-data-config-file=db-data-config.xml
+  
+  autoCommitSize=500 
+  
+  dataStoreType=couch #available values are mongo,es,couch 
+  
+  \#couch-db related settings
+  couch.host=localhost
+  
+  couch.db=xms-2124
+  
+  couch.port=5984
 
 This file defines the structure of your imported documents.
-The file structure follows Solr's dataimport configuration file. (see http://wiki.apache.org/solr/DataImportHandler)
+The file structure follows Solr's [dataimport configuration file](http://wiki.apache.org/solr/DataImportHandler)
 
 Field definitions have one more mandatory attribute "type".
+
 Possible values are 
 - STRING, 
 - INTEGER, 
@@ -55,5 +50,8 @@ Possible values are
 - TIMESTAMPASINTTOHUMANFORMAT (convert int to yyyy-MM-dd'T'HH:mm:ssz),
 - TIMESTAMPASLONGTOHUMANFORMAT (convert long to yyyy-MM-dd'T'HH:mm:ssz)
 
-**4 - Run SQLToNoSQLImporter.java !**
+**4 - Run main java class : SQLToNoSQLImporter.java**
+
+**5 - Enjoy!**
+
 
