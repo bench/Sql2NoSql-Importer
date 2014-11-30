@@ -18,7 +18,7 @@ How to use ?
 
 **2 - Modify import.properties file to match your needs.**
 
-  \#common properties
+`\#common properties
   sql-data-config-file=db-data-config.xml
   
   autoCommitSize=500 
@@ -30,7 +30,7 @@ How to use ?
   
   couch.db=xms-2124
   
-  couch.port=5984
+  couch.port=5984`
 
 This file defines the structure of your imported documents.
 The file structure follows Solr's [dataimport configuration file](http://wiki.apache.org/solr/DataImportHandler)
